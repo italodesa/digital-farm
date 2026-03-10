@@ -1,6 +1,8 @@
 from animals import *
 from plants import *
 from files import clear
+from inputs import input_menu
+from reports import general_report
 
 while True:
     clear()
@@ -8,7 +10,7 @@ while True:
     print("=" * 50)
     print(" " * 15 + "fazenda digital" + " " * 15 )
     print("=" * 50)
-    print("[1] Animais\n[2] Plantações\n[3] Insumos \n[4] relatorio geral\n[0] encerrar")
+    print("[1] Animais\n[2] Plantações\n[3] Insumos \n[4] Relatório geral\n[0] Encerrar")
     try:
         asw = int(input(">>> "))
 
@@ -23,10 +25,10 @@ while True:
                 plants_menu()
 
             case 3:
-                pass
+                input_menu()
 
             case 4:
-                pass
+                general_report()
 
             case _:
                 print("Digite uma opção valida")

@@ -126,8 +126,8 @@ def create_animal():
         name = input("Digite um nome para o animal: ")
         specie = input("Digite a especie do animal: ")
         age = int(input("Digite a idade do animal (em meses): "))
-        weight = float(input("Digite o peso do animal (em kilos):"))
-        status = input("Digite o status do animal (active, sold ou death)")
+        weight = float(input("Digite o peso do animal (em kilos): "))
+        status = input("Digite o status do animal (active, sold ou death): ")
 
         
        
@@ -212,7 +212,7 @@ def animals_menu():
         print("=" * 50)
         print(" " * 15 + "Animais" + " " * 15 )
         print("=" * 50)
-        print("[1] cadastrar animal\n[2] Registrar movimentação\n[3] relatorio \n[4] Pesquisar\n[0] voltar")
+        print("[1] Cadastrar animal\n[2] Registrar movimentação\n[3] Relatorio \n[4] Pesquisar\n[0] Voltar")
         asw = int(input(">>> "))
 
         match asw:

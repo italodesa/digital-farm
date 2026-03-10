@@ -5,12 +5,28 @@ crops = {
     "milho": 120,
     "alface": 45,
     "soja": 110,
-    "arroz": 130
+    "arroz": 130,
+    "feijao": 90,
+    "trigo": 120,
+    "cebola": 150,
+    "batata": 100,
+    "cenoura": 80,
+    "repolho": 90,
+    "tomate": 90,
+    "pepino": 60,
+    "abobora": 100,
+    "melancia": 85,
+    "melao": 75,
+    "couve": 70,
+    "brocolis": 85,
+    "pimentao": 100,
+    "berinjela": 110,
+    "cana_de_acucar": 365
 }
 
 class Plantation:
     def __init__(self,crop_type,area,planting_date,status,plantation_id=None,harvest_date=None):
-        self.plantation_id = plantation_id # None sera calculado depois
+        self.plantation_id = plantation_id # None, sera calculado depois
         self.crop_type = crop_type
         self.area = area
         self.planting_date = planting_date
@@ -29,7 +45,7 @@ class Plantation:
 def create_plantation():
     crop_type = input("informe o tipo de cultura plantada (ex: “milho”, “soja”): ").strip().lower()
     area = float(input("informe o tamanho da área cultivada em hectares: "))
-    planting_date = input("informe a data de plantio, registrada no formato YYYY-MM-DD")
+    planting_date = input("informe a data de plantio, registrada no formato YYYY-MM-DD: ")
     status = input("Situação atual da cultura (planted, harvested, rotated, inactive): ")
 
     path = verify("plants.json")
@@ -181,7 +197,7 @@ def plants_menu():
 
         print("[1] Criar plantação\n[2] Listar plantações\n[3] Atualizar status\n"
         "[4] Remover plantação\n[5] Relatorios de plantação\n[6] Registro de movimentação\n"
-        "[7] Buscar plantações\n[0] voltar")
+        "[7] Buscar plantações\n[0] Voltar")
 
         asw = int(input(">>> "))
 
