@@ -2,7 +2,7 @@ from animals import animals_menu
 from plants import plants_menu
 from files import clear
 from inputs import input_menu
-from reports import general_report
+from reports import reports_menu
 
 while True:
     clear()
@@ -28,7 +28,7 @@ while True:
                 input_menu()
 
             case 4:
-                general_report()
+                reports_menu()
 
             case _:
                 print("Digite uma opção valida")

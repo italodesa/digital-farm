@@ -1,6 +1,8 @@
 
 import json
 from files import *
+from movements import register_movement
+import movements
 
 class Animal:
 
@@ -36,6 +38,7 @@ class Animal:
 
                     new_name = input("informe o novo nome: ")
                     self.name = new_name
+                    register_movement("animal", self.animal_id, "update name", new_name)
 
                     animal_dict = self.__dict__
                     all_animals.append(animal_dict)
@@ -52,6 +55,7 @@ class Animal:
 
                     new_specie = input("informe a nova especie: ")
                     self.specie = new_specie
+                    register_movement("animal", self.animal_id, "update specie", new_specie)
 
                     animal_dict = self.__dict__
                     all_animals.append(animal_dict)
@@ -68,6 +72,7 @@ class Animal:
 
                     new_age = int(input("informe a nova idade: "))
                     self.age = new_age
+                    register_movement("animal", self.animal_id, "update age", new_age)
 
                     animal_dict = self.__dict__
                     all_animals.append(animal_dict)
@@ -85,6 +90,7 @@ class Animal:
 
                     new_weight = float(input("informe o novo peso: "))
                     self.weight = new_weight
+                    register_movement("animal", self.animal_id, "update weight", new_weight)
 
                     animal_dict = self.__dict__
                     all_animals.append(animal_dict)
@@ -102,6 +108,7 @@ class Animal:
 
                     new_status = input("informe o novo status: ")
                     self.status = new_status
+                    register_movement("animal", self.animal_id, "update status", new_status)
 
                     animal_dict = self.__dict__
                     all_animals.append(animal_dict)
@@ -164,8 +171,8 @@ def view_all_animals():
         print("\n")
 
 def recover_animal():
-    name = input("informe o nome do animal")
-    id = int(input("informe o id "))
+    name = input("informe o nome do animal: ")
+    id = int(input("informe o id: "))
     animals_data = view_datas("animals.json")
     animal_dict = None
 
@@ -212,7 +219,7 @@ def animals_menu():
         print("=" * 50)
         print(" " * 15 + "Animais" + " " * 15 )
         print("=" * 50)
-        print("[1] Cadastrar animal\n[2] Registrar movimentação\n[3] Relatorio \n[4] Pesquisar\n[0] Voltar")
+        print("[1] Cadastrar animal\n[2] Editar animal\n[3] Relatorio \n[4] Pesquisar\n[5] Registrar movimentação\n[0] Voltar")
         asw = int(input(">>> "))
 
         match asw:
@@ -241,6 +248,23 @@ def animals_menu():
                 except Exception as e:
                     print(f"Ocorreu um erro ao visualizar o animal: {e}")
                     print("Certifique-se de que os dados foram inseridos corretamente e tente novamente.")
+            
+            case 5:
+                all_movements = view_datas("movements.json")
+                print("\nRELATÓRIO DE MOVIMENTAÇÕES")
+                print(f"\n|{'DATA':20} |{'TIPO':10} |{'ID':7} |{'AÇÃO':20} |{'NOVO VALOR':20}")
+                print("-" * 80)
+                for m in all_movements:
+
+                    date = m["date"]
+                    entity_type = m["type"]
+                    obj_id = m["id"]
+                    action = m["action"]
+                    new_value = str(m["new_value"])
+
+                    if entity_type == "animal":
+                        print(f"|{date:20} |{entity_type:10} |{obj_id:<7} |{action:20} |{new_value:20}")
+                key = input("\nPressione Enter para voltar ao menu...")
 
             case _:
                 print("Digite uma opção valida")

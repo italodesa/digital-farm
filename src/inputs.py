@@ -1,6 +1,7 @@
 # inputs = insumos
 import json
 from files import * 
+from movements import register_movement
 
 class Input:
 
@@ -132,6 +133,7 @@ def update_input(atribute):
         json.dump(all_inputs, f, indent=4, ensure_ascii=False)
 
     print("insumo atualizado com sucesso!")
+    register_movement("input", input_obj.input_id, f"update {atribute}", valor)
 
 def update_input_menu():
     while True:

@@ -1,6 +1,8 @@
 from files import *
 from datetime import datetime, timedelta
 from reports import report_plants
+from movements import register_movement
+
 crops = {
     "milho": 120,
     "alface": 45,
@@ -154,6 +156,7 @@ def update_plantation(atribute):
         json.dump(all_plants, f, indent=4, ensure_ascii=False)
 
     print("plantação atualizada com sucesso!")
+    register_movement("plantation", id, f"update {atribute}", valor)
 
 def update_plantation_menu():
     while True:
