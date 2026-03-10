@@ -64,8 +64,7 @@ def view_unic_input():
         print("-" * 22)
         for chave, valor in input_obj.__dict__.items():
             print(f"{chave:<10} | {valor:<10}")
-    else:
-        print("Insumo não encontrado.")
+
 
 def delete_input(id):
 

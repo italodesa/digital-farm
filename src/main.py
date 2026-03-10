@@ -1,5 +1,5 @@
-from animals import *
-from plants import *
+from animals import animals_menu
+from plants import plants_menu
 from files import clear
 from inputs import input_menu
 from reports import general_report
