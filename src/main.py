@@ -1,6 +1,10 @@
 from animals import *
+from plants import *
+from files import clear
 
 while True:
+    clear()
+    
     print("=" * 50)
     print(" " * 15 + "fazenda digital" + " " * 15 )
     print("=" * 50)
@@ -16,7 +20,7 @@ while True:
                 animals_menu()
 
             case 2:
-                pass
+                plants_menu()
 
             case 3:
                 pass

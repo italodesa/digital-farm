@@ -1,11 +1,13 @@
 from pathlib import Path
 import json
+import os
 
 def verify(path):
 # Função para verificação de arquivos
 
         # variaveis que vão receber os caminhos dos arquivos
-        DATA_DIR = Path("data")
+        BASE_DIR = Path(path).resolve().parent.parent
+        DATA_DIR = BASE_DIR / "data"
         DATA_FILE = DATA_DIR / path
 
         #criar a pasta data caso ela não exista
@@ -29,9 +31,9 @@ def view_datas(a_path):
 
     return all_data
 
+def clear():
+    os.system("cls" if os.name == "nt" else "clear")
 
-
-              
 
 
 

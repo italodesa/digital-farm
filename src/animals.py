@@ -1,6 +1,6 @@
 
 import json
-from utils import verify,view_datas
+from files import *
 
 class Animal:
 
@@ -137,12 +137,12 @@ def create_animal():
 
         if animals_data:
         # Pega o maior ID e soma 1
-            proximo_id = max(a['animal_id'] for a in animals_data) + 1
+            next_id = max(a['animal_id'] for a in animals_data) + 1
         else:
-            proximo_id = 1  # Primeiro animal
+            next_id = 1  # Primeiro ID
 
         animal = Animal(name,specie,age,weight,status)
-        animal.animal_id = proximo_id
+        animal.animal_id = next_id
 
         animal_dict = animal.__dict__
         
@@ -156,8 +156,12 @@ def create_animal():
 
 def view_all_animals():
     animals_data = view_datas("animals.json")
-    for animal in animals_data:
-        print(animal)
+    for animal_data in animals_data:
+        print(f"{'Campo':<10} | {'Valor':<10}")
+        print("-" * 22)
+        for chave, valor in animal_data.items():
+            print(f"{chave:<10} | {valor:<10}")
+        print("\n")
 
 def recover_animal():
     name = input("informe o nome do animal")
@@ -204,6 +208,7 @@ def update_animal():
     
 def animals_menu():
     while True:
+        
         print("=" * 50)
         print(" " * 15 + "Animais" + " " * 15 )
         print("=" * 50)
@@ -213,18 +218,29 @@ def animals_menu():
         match asw:
             case 0:
                 break
-        
+            
             case 1:
-                create_animal()
+                try:
+                    create_animal()
+                except Exception as e:
+                    print(f"Ocorreu um erro ao cadastrar o animal: {e}")
+                    print("Certifique-se de que os dados foram inseridos corretamente e tente novamente.")
 
             case 2:
-                update_animal()
+                try:
+                    update_animal()
+                except Exception as e:
+                    print(f"Ocorreu um erro ao atualizar o animal: {e}")
 
             case 3:
                 view_all_animals()
 
             case 4:
-                view_animal()
+                try:
+                    view_animal()
+                except Exception as e:
+                    print(f"Ocorreu um erro ao visualizar o animal: {e}")
+                    print("Certifique-se de que os dados foram inseridos corretamente e tente novamente.")
 
             case _:
                 print("Digite uma opção valida")
